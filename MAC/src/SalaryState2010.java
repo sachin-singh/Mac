@@ -42,15 +42,18 @@ public class SalaryState2010 {
     public WebElement element;
     public int pageNumber =1;
     public int endPage=1;
-    String campus="";
-    String lastName="";
-    String firstName="";
-    String title="";
     String dept="";
+    String name="";
+    String title="";
     String base="";
-    String overtime="";
-    String adjustments="";
-    String gross=""; 
+    String other="";
+    String gross="";
+    String mdv="";
+    String er="";
+    String epepsn="";
+    String dc="";
+    String misc="";
+    String tcoe="";
     public int row=1;
     
     WritableWorkbook workbook ;
@@ -232,8 +235,8 @@ public class SalaryState2010 {
 		System.out.println("Loading....");
 
 		try{
-			driver.get("http://www.mercurynews.com/salaries/uc/2010/?cpipage="+pageNumber);
-//			sel.open("http://www.mercurynews.com/salaries/uc/2010/?cpipage="+pageNumber);
+			driver.get("http://www.mercurynews.com/salaries/state/2010?cpipage="+pageNumber);
+//			sel.open("http://www.mercurynews.com/salaries/state/2010?cpipage="+pageNumber);
 			System.out.println("Reading Page Number :"+pageNumber); 
 			System.out.println("check");
 			driver.getPageSource();
@@ -242,8 +245,8 @@ public class SalaryState2010 {
 		}
 		catch(Exception e){
 			e.printStackTrace();
-			driver.get("http://www.mercurynews.com/salaries/uc/2010/?cpipage="+pageNumber);
-//			sel.open("http://www.mercurynews.com/salaries/uc/2010/?cpipage="+pageNumber);
+			driver.get("http://www.mercurynews.com/salaries/state/2010?cpipage="+pageNumber);
+//			sel.open("http://www.mercurynews.com/salaries/state/2010?cpipage="+pageNumber);
 			System.out.println("Reading Page Number :"+pageNumber);
 			new WebDriverWait(driver, 200).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form/table/tbody/tr/td/div/table/tbody/tr[16]/td[9]")));
 		}
@@ -253,12 +256,12 @@ public class SalaryState2010 {
 		while( (isElementPresent(By.cssSelector("img[alt=\"Next10\"]"))) ){
 			System.out.println("Loading....");
 			try{
-				driver.get("http://www.mercurynews.com/salaries/uc/2010/?cpipage="+pageNumber);
+				driver.get("http://www.mercurynews.com/salaries/state/2010?cpipage="+pageNumber);
 				System.out.println("Reading Page Number :"+pageNumber);
 				new WebDriverWait(driver, 200).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form/table/tbody/tr/td/div/table/tbody/tr[16]/td[9]")));
 			}
 			catch(Exception e){
-				driver.get("http://www.mercurynews.com/salaries/uc/2010/?cpipage="+pageNumber);
+				driver.get("http://www.mercurynews.com/salaries/state/2010?cpipage="+pageNumber);
 				System.out.println("Reading Page Number :"+pageNumber);
 			}
 			crawlPage(pageNumber,startIndex);
